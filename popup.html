@@ -1,0 +1,38 @@
+<html lang="en">
+<style>
+    @import url("https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.classless.zinc.min.css");
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script defer src="popup.js"></script>
+    <title>Overleaf Font Customizer</title>
+</head>
+
+<body style="width: 300px;">
+    <main>
+        <select id="font-select">
+            <option value="">Select</option>
+            <option value="Arial">Arial</option>
+            <option value="Georgia">Georgia</option>
+            <option value="Times New Roman">Times New Roman</option>
+            <option value="IPAexMincho">IPAexMincho</option>
+            <option value="cursive">Cursive</option>
+            <option value="UD デジタル 教科書体 NP">UD デジタル 教科書体 NP</option>
+            <option value="Noto Sans">Noto Sans</option>
+            <option value="other">Other</option>
+        </select>
+        <div id="custom-font-container" style="display: none;">
+            <input type="text" id="custom-font-input" placeholder="Font Family" />
+        </div>
+        <div id="current-font-container">
+            <p><b>Current:</b> <span id="current-font"></span></p>
+        </div>
+    </main>
+    <footer>
+        <a href="https://github.com/Mya-Mya/OverleafFontCustomizer" target="_blank">Overleaf Font Customizer</a>
+    </footer>
+</body>
+
+</html>

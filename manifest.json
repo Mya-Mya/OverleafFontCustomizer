@@ -1,0 +1,29 @@
+{
+    "manifest_version": 3,
+    "name": "Overleaf Font Customizer",
+    "version": "1.0",
+    "description": "Customize the Fonts in Overleaf",
+    "permissions": [
+        "activeTab",
+        "scripting"
+    ],
+    "content_scripts": [
+        {
+            "matches": [
+                "https://www.overleaf.com/project/*"
+            ],
+            "js": [
+                "background.js"
+            ]
+        }
+    ],
+    "action": {
+        "default_icon": {
+            "64": "icon64.png"
+        },
+        "default_popup": "popup.html"
+    },
+    "icons": {
+        "64": "icon64.png"
+    }
+}
