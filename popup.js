@@ -11,8 +11,8 @@ dispatch("GET_CURRENT_FONT").then(currentFont => {
 })
 
 const NAMED_FONTS = [
-    "Arial", "IPAexMincho", "Helvetica", "Verdana", "Noto Sans", "Meiryo UI", "UD デジタル 教科書体 NP",
-    "Cambria", "Georgia", "Century", "Palatino Linotype", "Sylfaen", "Times New Roman", "Yu Mincho", "Lucida Console",
+    "Arial", "Calibri", "IPAexMincho", "Helvetica", "Verdana", "Noto Sans", "Meiryo UI", "UD デジタル 教科書体 NP",
+    "Cambria", "Book Antiqua", "Georgia", "Century", "Palatino Linotype", "Sylfaen", "Times New Roman", "Yu Mincho", "Lucida Console",
     "Cursive", "Comic Sans MS"
 ]
 NAMED_FONTS.forEach(font => {
