@@ -2,30 +2,36 @@
 const $fontSelect = document.getElementById("font-select")
 const $customFontContainer = document.getElementById("custom-font-container")
 const $customFontInput = document.getElementById("custom-font-input")
-const $currentFont =  document.getElementById("current-font")
-const $currentFontContainer =  document.getElementById("current-font-container")
+const $currentFont = document.getElementById("current-font")
+const $currentFontContainer = document.getElementById("current-font-container")
+
 // Startups
 dispatch("GET_CURRENT_FONT").then(currentFont => {
     $currentFont.textContent = currentFont
 })
 
-// Handlers
-$fontSelect.addEventListener("change", () => {
-    $currentFontContainer.style.display = "none"
-
-    if ($fontSelect.value === "other") {
-        $customFontContainer.style.display = "block"
-        $customFontInput.focus()
-    } else {
-        $customFontContainer.style.display = "none"
-    }
-    dispatchFontChange()
+const NAMED_FONTS = [
+    "Arial", "IPAexMincho", "Helvetica", "Verdana", "Noto Sans", "Meiryo UI", "UD デジタル 教科書体 NP",
+    "Georgia", "Century", "Palatino Linotype", "Sylfaen", "Times New Roman", "Yu Mincho", "Lucida Console",
+    "Cursive", "Comic Sans MS"
+]
+NAMED_FONTS.forEach(font => {
+    const $button = document.createElement("button")
+    $button.textContent = font
+    $button.style.fontFamily = font
+    $button.addEventListener("click", () => {
+        dispatchSetFont(font)
+        $customFontInput.value = ""
+    })
+    $fontSelect.appendChild($button)
 })
-$customFontInput.addEventListener("input", dispatchFontChange)
+
+// Handlers
+$customFontInput.addEventListener("input", () => dispatchSetFont($customFontInput.value))
 
 // Utilities
-function dispatchFontChange() {
-    const fontFamily = $fontSelect.value === "other" ? $customFontInput.value : $fontSelect.value
+function dispatchSetFont(fontFamily) {
+    $currentFont.textContent = fontFamily
     dispatch("SET_FONT", { fontFamily })
 }
 
