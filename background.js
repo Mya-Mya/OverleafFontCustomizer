@@ -50,15 +50,15 @@ function setLetterSpacing(payload) {
 }
 
 function setFontColor(payload) {
-    const { colorValue } = payload
+    const { value } = payload
     const $cmeditor = document.querySelector(".cm-editor")
-    $cmeditor.style.color = `rgb(${colorValue},${colorValue},${colorValue})`
+    $cmeditor.style.color = value
 }
 
 function setBgColor(payload) {
-    const { colorValue } = payload
+    const { value } = payload
     const $cmeditor = document.querySelector(".cm-editor")
-    $cmeditor.style.backgroundColor = `rgb(${colorValue},${colorValue},${colorValue})`
+    $cmeditor.style.backgroundColor = value
 }
 
 function enableLineBorder(payload) {

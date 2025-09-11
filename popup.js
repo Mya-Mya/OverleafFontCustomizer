@@ -7,6 +7,8 @@ const $currentFontContainer = document.getElementById("current-font-container")
 const $lsSelect = document.getElementById("ls-select")
 const $fontColorSlider = document.getElementById("font-color-slider")
 const $bgColorSlider = document.getElementById("bg-color-slider")
+const $customFontColorInput = document.getElementById("custom-font-color-input")
+const $customBgColorInput = document.getElementById("custom-bg-color-input")
 const $lineBorderCheckbox = document.getElementById("line-border-checkbox")
 
 // Startups
@@ -78,8 +80,20 @@ LETTER_SPACINGS.forEach(ls => {
 
 // Handlers
 $customFontInput.addEventListener("input", () => dispatchSetFont($customFontInput.value))
-$fontColorSlider.addEventListener("input", () => { dispatchSetFontColor($fontColorSlider.value) })
-$bgColorSlider.addEventListener("input", () => { dispatchSetBgColor($bgColorSlider.value) })
+$fontColorSlider.addEventListener("input", () => {
+    const x = $fontColorSlider.value
+    dispatchSetFontColor(`rgb(${x},${x},${x})`)
+})
+$bgColorSlider.addEventListener("input", () => {
+    const x = $bgColorSlider.value
+    dispatchSetBgColor(`rgb(${x},${x},${x})`)
+})
+$customFontColorInput.addEventListener("input", () => {
+    dispatchSetFontColor($customFontColorInput.value)
+})
+$customBgColorInput.addEventListener("input", () => {
+    dispatchSetBgColor($customBgColorInput.value)
+})
 $lineBorderCheckbox.addEventListener("change", () => {
     if ($lineBorderCheckbox.checked) { dispatchEnableLineBorder() }
     else { dispatchDisableLineBorder() }
@@ -96,10 +110,10 @@ function dispatchSetLetterSpacing(ls) {
     dispatch("SET_LETTER_SPACING", { ls })
 }
 function dispatchSetFontColor(value) {
-    dispatch("SET_FONT_COLOR", { colorValue: value });
+    dispatch("SET_FONT_COLOR", { value: value });
 }
 function dispatchSetBgColor(value) {
-    dispatch("SET_BG_COLOR", { colorValue: value });
+    dispatch("SET_BG_COLOR", { value: value });
 }
 function dispatchEnableLineBorder() {
     dispatch("ENABLE_LINE_BORDER", {})
