@@ -8,10 +8,19 @@ chrome.runtime.onMessage.addListener((args, _ev, sendResponse) => {
         "SET_LETTER_SPACING": setLetterSpacing,
         "SET_FONT_COLOR": setFontColor,
         "SET_BG_COLOR": setBgColor,
+        "ENABLE_LINE_BORDER": enableLineBorder,
+        "DISABLE_LINE_BORDER": disableLineBorder,
     }[action]
     const response = func(payload)
     sendResponse(response)
 })
+
+// Utilities
+function setLineBorderTop(value) {
+    const style = document.createElement('style');
+    style.textContent = `.cm-line { border-top:${value} }`;
+    document.head.appendChild(style);
+}
 
 // Handlers
 function loadCSS(payload) {
@@ -50,4 +59,12 @@ function setBgColor(payload) {
     const { colorValue } = payload
     const $cmeditor = document.querySelector(".cm-editor")
     $cmeditor.style.backgroundColor = `rgb(${colorValue},${colorValue},${colorValue})`
+}
+
+function enableLineBorder(payload){
+    setLineBorderTop("solid 1px gray;")
+}
+
+function disableLineBorder(payload){
+    setLineBorderTop("none")
 }
