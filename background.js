@@ -18,7 +18,7 @@ chrome.runtime.onMessage.addListener((args, _ev, sendResponse) => {
 // Utilities
 function setLineBorderTop(value) {
     const style = document.createElement('style');
-    style.textContent = `.cm-line { border-top:${value} }`;
+    style.textContent = `.cm-line { border-top:${value}; }`;
     document.head.appendChild(style);
 }
 
@@ -62,7 +62,7 @@ function setBgColor(payload) {
 }
 
 function enableLineBorder(payload){
-    setLineBorderTop("solid 1px gray;")
+    setLineBorderTop("dotted 1px gray")
 }
 
 function disableLineBorder(payload){
