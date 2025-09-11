@@ -5,6 +5,8 @@ const $customFontInput = document.getElementById("custom-font-input")
 const $currentFont = document.getElementById("current-font")
 const $currentFontContainer = document.getElementById("current-font-container")
 const $lsSelect = document.getElementById("ls-select")
+const $fontColorSlider = document.getElementById("font-color-slider")
+const $bgColorSlider = document.getElementById("bg-color-slider")
 
 // Startups
 
@@ -43,6 +45,8 @@ LETTER_SPACINGS.forEach(ls => {
 
 // Handlers
 $customFontInput.addEventListener("input", () => dispatchSetFont($customFontInput.value))
+$fontColorSlider.addEventListener("input", () => { dispatchSetFontColor($fontColorSlider.value) })
+$bgColorSlider.addEventListener("input", () => { dispatchSetBgColor($bgColorSlider.value) })
 
 // Utilities
 function dispatchSetFont(fontFamily) {
@@ -51,6 +55,12 @@ function dispatchSetFont(fontFamily) {
 }
 function dispatchSetLetterSpacing(ls) {
     dispatch("SET_LETTER_SPACING", { ls })
+}
+function dispatchSetFontColor(value) {
+    dispatch("SET_FONT_COLOR", { colorValue: value });
+}
+function dispatchSetBgColor(value) {
+    dispatch("SET_BG_COLOR", { colorValue: value });
 }
 
 async function dispatch(action, payload = {}) {
