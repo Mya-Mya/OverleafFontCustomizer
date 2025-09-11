@@ -18,7 +18,11 @@ dispatch("GET_CURRENT_FONT").then(currentFont => {
 /// List fonts
 const FONTS = [
     ["Open Sans", "https://fonts.googleapis.com/css2?family=Open+Sans&display=swap"],
+    ["Roboto", "https://fonts.googleapis.com/css2?family=Roboto&display=swap"],
+    ["Lexend", "https://fonts.googleapis.com/css2?family=Lexend:wght@300&display=swap"],
+    ["Lato", "https://fonts.googleapis.com/css2?family=Lato&display=swap"],
     ["Arial", undefined],
+    ["Verdana", undefined],
     ["Calibri", undefined],
     ["IPAexMincho", undefined],
     ["Helvetica", undefined],
@@ -28,6 +32,9 @@ const FONTS = [
     ["PT Serif", "https://fonts.googleapis.com/css2?family=PT+Serif&display=swap"],
     // ["Source Serif 4", "https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz@8..60&display=swap"], // なぜかエラー
     ["Lora", "https://fonts.googleapis.com/css2?family=Lora&display=swap"],
+    ["Spectral", "https://fonts.googleapis.com/css2?family=Spectral&display=swap"],
+    ["Nunito Sans", "https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz@6..12&display=swap"],
+    // ["Merriweather", "https://fonts.googleapis.com/css2?family=Merriweather:opsz,wght@18..144,300..900&display=swap"], // なぜかエラー
     ["Literata", "https://fonts.googleapis.com/css2?family=Literata:opsz@7..72&display=swap"],
     ["Noto Serif", undefined],
     ["Cambria", undefined],
