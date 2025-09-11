@@ -61,10 +61,10 @@ function setBgColor(payload) {
     $cmeditor.style.backgroundColor = `rgb(${colorValue},${colorValue},${colorValue})`
 }
 
-function enableLineBorder(payload){
+function enableLineBorder(payload) {
     setLineBorderTop("dotted 1px gray")
 }
 
-function disableLineBorder(payload){
+function disableLineBorder(payload) {
     setLineBorderTop("none")
 }
