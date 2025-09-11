@@ -2,6 +2,7 @@
 chrome.runtime.onMessage.addListener((args, _ev, sendResponse) => {
     const { action, payload } = args
     const func = {
+        "LOAD_CSS": loadCSS,
         "SET_FONT": setFont,
         "GET_CURRENT_FONT": getCurrentFont,
         "SET_LETTER_SPACING": setLetterSpacing,
@@ -13,6 +14,14 @@ chrome.runtime.onMessage.addListener((args, _ev, sendResponse) => {
 })
 
 // Handlers
+function loadCSS(payload) {
+    const { url } = payload
+    const $ref = document.createElement("link")
+    $ref.rel = "stylesheet"
+    $ref.type = "text/css"
+    $ref.href = url
+    document.getElementsByTagName("head")[0].appendChild($ref)
+}
 function setFont(payload) {
     const { fontFamily } = payload
     const $cmeditor = document.querySelector(".cm-editor")

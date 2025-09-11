@@ -16,21 +16,44 @@ dispatch("GET_CURRENT_FONT").then(currentFont => {
 })
 
 /// List fonts
-const NAMED_FONTS = [
-    "Arial", "Calibri", "IPAexMincho", "Helvetica", "Verdana", "Noto Sans", "Meiryo UI", "UD デジタル 教科書体 NP",
-    "Cambria", "Book Antiqua", "Georgia", "Century", "Palatino Linotype", "Sylfaen", "Times New Roman", "Yu Mincho", "Lucida Console",
-    "Cursive", "Comic Sans MS"
+const FONTS = [
+    ["Open Sans", "https://fonts.googleapis.com/css2?family=Open+Sans&display=swap"],
+    ["Arial", undefined],
+    ["Calibri", undefined],
+    ["IPAexMincho", undefined],
+    ["Helvetica", undefined],
+    ["Noto Sans", undefined],
+    ["Meiryo UI", undefined],
+    ["UD デジタル 教科書体 NP", undefined],
+    ["PT Serif", "https://fonts.googleapis.com/css2?family=PT+Serif&display=swap"],
+    // ["Source Serif 4", "https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz@8..60&display=swap"], // なぜかエラー
+    ["Lora", "https://fonts.googleapis.com/css2?family=Lora&display=swap"],
+    ["Literata", "https://fonts.googleapis.com/css2?family=Literata:opsz@7..72&display=swap"],
+    ["Noto Serif", undefined],
+    ["Cambria", undefined],
+    ["Book Antiqua", undefined],
+    ["Georgia", undefined],
+    ["Century", undefined],
+    ["Palatino Linotype", undefined],
+    ["Sylfaen", undefined],
+    ["Times New Roman", undefined],
+    ["Yu Mincho", undefined],
 ]
-NAMED_FONTS.forEach(font => {
+function addFontList(name, url) {
     const $button = document.createElement("button")
-    $button.textContent = font
-    $button.style.fontFamily = font
+    $button.textContent = name
+    $button.style.fontFamily = name
     $button.addEventListener("click", () => {
-        dispatchSetFont(font)
+        if (url != undefined) {
+            // Web font
+            dispatchLoadCSS(url)
+        }
+        dispatchSetFont(name)
         $customFontInput.value = ""
     })
     $fontSelect.appendChild($button)
-})
+}
+FONTS.forEach(font => addFontList(font[0], font[1]))
 
 /// List letter spacings
 const LETTER_SPACINGS = ["0", "0.02em", "0.04em", "0.06em"]
@@ -49,6 +72,9 @@ $fontColorSlider.addEventListener("input", () => { dispatchSetFontColor($fontCol
 $bgColorSlider.addEventListener("input", () => { dispatchSetBgColor($bgColorSlider.value) })
 
 // Utilities
+function dispatchLoadCSS(url) {
+    dispatch("LOAD_CSS", { url })
+}
 function dispatchSetFont(fontFamily) {
     $currentFont.textContent = fontFamily
     dispatch("SET_FONT", { fontFamily })
