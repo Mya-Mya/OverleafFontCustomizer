@@ -6,6 +6,12 @@
         grid-template-columns: repeat(2,1fr);
         gap: 4px;
         font-size: small;
+
+    #ls-select {
+        width: 100%;
+        display: flex;
+        justify-content: stretch;
+        gap: 4px;
     }
     button{
         padding: 4px;
@@ -21,14 +27,21 @@
 
 <body style="width: 400px;">
     <main>
-        <article id="font-select">
+        <article>
+            <h3>Font</h3>
+            <div id="font-select"></div>
+
+            <div id="custom-font-container">
+                <input type="text" id="custom-font-input" placeholder="Other Font Family" />
+            </div>
+            <div id="current-font-container">
+                <p><b>Current:</b> <span id="current-font"></span></p>
+            </div>
         </article>
-        <div id="custom-font-container">
-            <input type="text" id="custom-font-input" placeholder="Other Font Family" />
-        </div>
-        <div id="current-font-container">
-            <p><b>Current:</b> <span id="current-font"></span></p>
-        </div>
+        <article>
+            <h3>Letter Spacing</h3>
+            <div id="ls-select"></div>
+        </article>
     </main>
     <footer>
         <a href="https://github.com/Mya-Mya/OverleafFontCustomizer" target="_blank">Overleaf Font Customizer</a>

@@ -3,7 +3,8 @@ chrome.runtime.onMessage.addListener((args, _ev, sendResponse) => {
     const { action, payload } = args
     const func = { 
         "SET_FONT": setFont,
-        "GET_CURRENT_FONT": getCurrentFont
+        "GET_CURRENT_FONT": getCurrentFont,
+        "SET_LETTER_SPACING": setLetterSpacing
     }[action]
     const response = func(payload)
     sendResponse(response)
@@ -20,4 +21,10 @@ function setFont(payload) {
 function getCurrentFont(payload){
     const $cmeditor = document.querySelector(".cm-editor")
     return $cmeditor.style.getPropertyValue("--source-font-family")
+}
+
+function setLetterSpacing(payload){
+    const {ls} = payload
+    const $cmeditor = document.querySelector(".cm-editor")
+    $cmeditor.style.letterSpacing = ls
 }
