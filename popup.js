@@ -23,6 +23,7 @@ const FONTS = [
     ["Roboto", "https://fonts.googleapis.com/css2?family=Roboto&display=swap"],
     ["Lexend", "https://fonts.googleapis.com/css2?family=Lexend:wght@300&display=swap"],
     ["Lato", "https://fonts.googleapis.com/css2?family=Lato&display=swap"],
+    ["Inter", "https://fonts.googleapis.com/css2?family=Inter:opsz@14..32&display=swap"],
     ["Arial", undefined],
     ["Verdana", undefined],
     ["Calibri", undefined],
@@ -46,6 +47,7 @@ const FONTS = [
     ["Sylfaen", undefined],
     ["Times New Roman", undefined],
     ["Yu Mincho", undefined],
+    ["BIZ UDPMincho", "https://fonts.googleapis.com/css2?family=BIZ+UDPMincho&display=swap"]
 ]
 function addFontList(name, url) {
     const $button = document.createElement("button")
