@@ -35,6 +35,7 @@ const FONTS = [
     ["Meiryo UI", undefined],
     ["UD デジタル 教科書体 NP", undefined],
     ["PT Serif", "https://fonts.googleapis.com/css2?family=PT+Serif&display=swap"],
+    ["凸版文久明朝", undefined],
     // ["Source Serif 4", "https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz@8..60&display=swap"], // なぜかエラー
     ["Lora", "https://fonts.googleapis.com/css2?family=Lora&display=swap"],
     ["Spectral", "https://fonts.googleapis.com/css2?family=Spectral&display=swap"],
@@ -50,6 +51,7 @@ const FONTS = [
     ["Times New Roman", undefined],
     ["Yu Mincho", undefined],
     ["BIZ UDPMincho", "https://fonts.googleapis.com/css2?family=BIZ+UDPMincho&display=swap"]
+    ["筑紫B丸ゴシック", undefined],
 ]
 function addFontList(name, url) {
     const $button = document.createElement("button")
