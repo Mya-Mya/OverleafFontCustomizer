@@ -50,7 +50,7 @@ const FONTS = [
     ["Sylfaen", undefined],
     ["Times New Roman", undefined],
     ["Yu Mincho", undefined],
-    ["BIZ UDPMincho", "https://fonts.googleapis.com/css2?family=BIZ+UDPMincho&display=swap"]
+    ["BIZ UDPMincho", "https://fonts.googleapis.com/css2?family=BIZ+UDPMincho&display=swap"],
     ["筑紫B丸ゴシック", undefined],
 ]
 function addFontList(name, url) {
