@@ -32,28 +32,30 @@
 <body style="width: 400px;">
     <main>
         <article>
-            <h3>Font</h3>
-            <div id="font-select"></div>
+            <h3>Font Family</h3>
+            <p><span id="current-font-family"></span></p>
+            <div id="font-family-select"></div>
+            <input type="text" id="custom-font-family-input" placeholder="Other Font Family" />
+        </article>
 
-            <div id="custom-font-container">
-                <input type="text" id="custom-font-input" placeholder="Other Font Family" />
-            </div>
-            <div id="current-font-container">
-                <p><b>Current:</b> <span id="current-font"></span></p>
-            </div>
-        </article>
         <article>
-            <h3>Letter Spacing</h3>
-            <div id="ls-select"></div>
+            <h3>Font Scales</h3>
+            <label for="font-size-slider">Font Size: <span id="current-font-size"></span></label>
+            <input type="range" id="font-size-slider" min="10" max="24" step="1" value="16">
+            <label for="letter-spacing-slider">Letter Spacing: <span id="current-letter-spacing"></span></label>
+            <input type="range" id="letter-spacing-slider" min="-0.1" max="0.1" step="0.001" value="0">
+            <label for="word-spacing-slider">Word Spacing: <span id="current-word-spacing"></span></label>
+            <input type="range" id="word-spacing-slider" min="-0.1" max="0.1" step="0.001" value="0">
+            <label for="line-height-slider">Line Height: <span id="current-line-height"></label>
+            <input type="range" id="line-height-slider" min="0.7" max="2.0" step="0.01" value="1.5">
         </article>
+
         <article>
             <h3>Colors</h3>
-            <label for="font-color-slider">Font</label>
+            <label for="font-color-slider">Font: <span id="current-font-color"></span></label>
             <input type="range" id="font-color-slider" min="0" max="100" value="0">
-            <input type="text" id="custom-font-color-input" placeholder="Other Font Color">
-            <label for="bg-color-slider">BG</label>
+            <label for="bg-color-slider">BG: <span id="current-bg-color"></span></label>
             <input type="range" id="bg-color-slider" min="230" max="255" value="255">
-            <input type="text" id="custom-bg-color-input" placeholder="Other BG Color">
         </article>
 
         <article>

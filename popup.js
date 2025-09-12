@@ -1,24 +1,64 @@
 // DOMs
-const $fontSelect = document.getElementById("font-select")
-const $customFontContainer = document.getElementById("custom-font-container")
-const $customFontInput = document.getElementById("custom-font-input")
-const $currentFont = document.getElementById("current-font")
-const $currentFontContainer = document.getElementById("current-font-container")
-const $lsSelect = document.getElementById("ls-select")
-const $fontColorSlider = document.getElementById("font-color-slider")
-const $bgColorSlider = document.getElementById("bg-color-slider")
-const $customFontColorInput = document.getElementById("custom-font-color-input")
-const $customBgColorInput = document.getElementById("custom-bg-color-input")
-const $lineBorderCheckbox = document.getElementById("line-border-checkbox")
+/**
+ * @param {string} id 
+ * @returns {HTMLElement}
+ */
+function $(id){
+    return document.getElementById(id)
+}
+
+const $currentFontFamily = $("current-font-family")
+const $fontFamilySelect = $("font-family-select")
+const $customFontFamilyInput = $("custom-font-family-input")
+
+const $currentFontSize = $("current-font-size")
+const $fontSizeSlider = $("font-size-slider")
+
+const $currentLetterSpacing = $("current-letter-spacing")
+const $letterSpacingSlider = $("letter-spacing-slider")
+
+const $currentWordSpacing = $("current-word-spacing")
+const $wordSpacingSlider = $("word-spacing-slider")
+
+const $currentLineHeight = $("current-line-height")
+const $lineHeightSlider = $("line-height-slider")
+
+const $currentFontColor = $("current-font-color")
+const $fontColorSlider = $("font-color-slider")
+
+const $currentBgColor = $("current-bg-color")
+const $bgColorSlider = $("bg-color-slider")
+
+const $lineBorderCheckbox = $("line-border-checkbox")
 
 // Startups
 
-/// Get current font
-dispatch("GET_CURRENT_FONT").then(currentFont => {
-    $currentFont.textContent = currentFont
+dispatchGetSetting().then(setting=>{
+    $currentFontFamily.textContent = setting.fontFamily
+
+    $currentFontSize.textContent = setting.fontSizePx+"px"
+    $fontSizeSlider.value = setting.fontSizePx
+
+    $currentLetterSpacing.textContent = setting.letterSpacingEm+"em"
+    $letterSpacingSlider.value = setting.letterSpacingEm
+
+    $currentWordSpacing.textContent = setting.wordSpacingEm+"em"
+    $wordSpacingSlider.value = setting.wordSpacingEm
+
+    $currentLineHeight.textContent = setting.lineHeightScale
+    $lineHeightSlider.value = setting.lineHeightScale
+
+    $currentFontColor.textContent = setting.fontColorLevel
+    $fontColorSlider.value = setting.fontColorLevel
+
+    $currentBgColor.textContent = setting.bgColorLevel
+    $bgColorSlider.value = setting.bgColorLevel
+
+    $lineBorderCheckbox.checked = setting.lineBorderEnabled
 })
 
-/// List fonts
+
+// Fonts
 const FONTS = [
     ["Nunito Sans", "https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz@6..12&display=swap"],
     ["Open Sans", "https://fonts.googleapis.com/css2?family=Open+Sans&display=swap"],
@@ -62,66 +102,60 @@ function addFontList(name, url) {
             // Web font
             dispatchLoadCSS(url)
         }
-        dispatchSetFont(name)
-        $customFontInput.value = ""
+        dispatchSetValue("fontFamily", name)
+        $customFontFamilyInput.value = ""
     })
-    $fontSelect.appendChild($button)
+    $fontFamilySelect.appendChild($button)
 }
 FONTS.forEach(font => addFontList(font[0], font[1]))
 
-/// List letter spacings
-const LETTER_SPACINGS = ["0", "0.01em", "0.02em", "0.04em", "0.06em"]
-LETTER_SPACINGS.forEach(ls => {
-    const $button = document.createElement("button")
-    $button.textContent = ls
-    $button.addEventListener("click", () => {
-        dispatchSetLetterSpacing(ls)
-    })
-    $lsSelect.appendChild($button)
+// Input Event Handlers
+$fontSizeSlider.addEventListener("input", ()=>{
+    $currentFontSize.textContent = $fontSizeSlider.value+"px"
+    dispatchSetValue("fontSizePx", $fontSizeSlider.value)
 })
 
-// Handlers
-$customFontInput.addEventListener("input", () => dispatchSetFont($customFontInput.value))
+$letterSpacingSlider.addEventListener("input", ()=>{
+    $currentLetterSpacing.textContent = $letterSpacingSlider.value+"em"
+    dispatchSetValue("letterSpacingEm", $letterSpacingSlider.value)
+})
+
+$wordSpacingSlider.addEventListener("input", () => {
+    $currentWordSpacing.textContent = $wordSpacingSlider.value + "em"
+    dispatchSetValue("wordSpacingEm", $wordSpacingSlider.value)
+})
+
+$lineHeightSlider.addEventListener("input", () => {
+    $currentLineHeight.textContent = $lineHeightSlider.value
+    dispatchSetValue("lineHeightScale", $lineHeightSlider.value)
+})
+
 $fontColorSlider.addEventListener("input", () => {
-    const x = $fontColorSlider.value
-    dispatchSetFontColor(`rgb(${x},${x},${x})`)
+    $currentFontColor.textContent = $fontColorSlider.value
+    dispatchSetValue("fontColorLevel", $fontColorSlider.value)
 })
+
 $bgColorSlider.addEventListener("input", () => {
-    const x = $bgColorSlider.value
-    dispatchSetBgColor(`rgb(${x},${x},${x})`)
+    $currentBgColor.textContent = $bgColorSlider.value
+    dispatchSetValue("bgColorLevel", $bgColorSlider.value)
 })
-$customFontColorInput.addEventListener("input", () => {
-    dispatchSetFontColor($customFontColorInput.value)
-})
-$customBgColorInput.addEventListener("input", () => {
-    dispatchSetBgColor($customBgColorInput.value)
-})
+
 $lineBorderCheckbox.addEventListener("change", () => {
-    if ($lineBorderCheckbox.checked) { dispatchEnableLineBorder() }
-    else { dispatchDisableLineBorder() }
+    dispatchSetValue("lineBorderEnabled", $lineBorderCheckbox.checked)
 })
+
+
 // Utilities
 function dispatchLoadCSS(url) {
     dispatch("LOAD_CSS", { url })
 }
-function dispatchSetFont(fontFamily) {
-    $currentFont.textContent = fontFamily
-    dispatch("SET_FONT", { fontFamily })
+
+function dispatchSetValue(fieldName, value){
+    return dispatch("SET_VALUE", {fieldName, value})
 }
-function dispatchSetLetterSpacing(ls) {
-    dispatch("SET_LETTER_SPACING", { ls })
-}
-function dispatchSetFontColor(value) {
-    dispatch("SET_FONT_COLOR", { value: value });
-}
-function dispatchSetBgColor(value) {
-    dispatch("SET_BG_COLOR", { value: value });
-}
-function dispatchEnableLineBorder() {
-    dispatch("ENABLE_LINE_BORDER", {})
-}
-function dispatchDisableLineBorder() {
-    dispatch("DISABLE_LINE_BORDER", {})
+
+function dispatchGetSetting(){
+    return dispatch("GET_SETTING")
 }
 
 async function dispatch(action, payload = {}) {
