@@ -6,7 +6,7 @@ let setting = {
     "wordSpacingEm": 0,
     "lineHeightScale": 0,
     "fontColorLevel": 0,
-    "bgColorLevel": 0,
+    "bgColorLevel": 255,
     "lineBorderEnabled": false
 }
 
