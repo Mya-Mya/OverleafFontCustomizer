@@ -95,7 +95,7 @@ const FONTS = [
     ["Zen Kaku Gothic New", "https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New&display=swap"],
 ]
 function addFontList(name, url) {
-    const $button = document.createElement("button")
+    const $button = document.createElement("a")
     $button.textContent = name
     $button.style.fontFamily = name
     $button.addEventListener("click", () => {
@@ -105,6 +105,7 @@ function addFontList(name, url) {
         }
         dispatchSetValue("fontFamily", name)
         $customFontFamilyInput.value = ""
+        $currentFontFamily.textContent = name
     })
     $fontFamilySelect.appendChild($button)
 }

@@ -3,15 +3,18 @@
     @import url("https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.classless.zinc.min.css");
 
     #font-family-select {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 2px;
-        font-size: small;
-        margin-bottom: 2px;
+        margin-bottom: 4px;
+        text-wrap-style: balance;
     }
 
-    button {
-        padding: 2px;
+    a {
+        font-size: large;
+        padding: 4px;
+        cursor: pointer;
+    }
+
+    a:hover {
+        background-color: var(--pico-contrast-focus);
     }
 </style>
 
