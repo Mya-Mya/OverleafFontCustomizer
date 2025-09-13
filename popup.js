@@ -92,6 +92,7 @@ const FONTS = [
     ["Yu Mincho", undefined],
     ["BIZ UDPMincho", "https://fonts.googleapis.com/css2?family=BIZ+UDPMincho&display=swap"],
     ["筑紫B丸ゴシック", undefined],
+    ["Zen Kaku Gothic New", "https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New&display=swap"],
 ]
 function addFontList(name, url) {
     const $button = document.createElement("button")
