@@ -35,16 +35,18 @@ const $lineBorderCheckbox = $("line-border-checkbox")
 
 // Startups
 
-dispatchGetSetting().then(setting=>{
+dispatchGetSetting().then(setting => {
     $currentFontFamily.textContent = setting.fontFamily
 
-    $currentFontSize.textContent = setting.fontSizePx+"px"
+    $boldCheckbox.checked = setting.isBold
+
+    $currentFontSize.textContent = setting.fontSizePx + "px"
     $fontSizeSlider.value = setting.fontSizePx
 
-    $currentLetterSpacing.textContent = setting.letterSpacingEm+"em"
+    $currentLetterSpacing.textContent = setting.letterSpacingEm + "em"
     $letterSpacingSlider.value = setting.letterSpacingEm
 
-    $currentWordSpacing.textContent = setting.wordSpacingEm+"em"
+    $currentWordSpacing.textContent = setting.wordSpacingEm + "em"
     $wordSpacingSlider.value = setting.wordSpacingEm
 
     $currentLineHeight.textContent = setting.lineHeightScale
@@ -78,6 +80,7 @@ const FONTS = [
     ["UD デジタル 教科書体 NP", undefined],
     ["PT Serif", "https://fonts.googleapis.com/css2?family=PT+Serif&display=swap"],
     ["凸版文久明朝", undefined],
+    ["Shippori Mincho B1", "https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1&display=swap"],
     // ["Source Serif 4", "https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz@8..60&display=swap"], // なぜかエラー
     ["Lora", "https://fonts.googleapis.com/css2?family=Lora&display=swap"],
     ["Spectral", "https://fonts.googleapis.com/css2?family=Spectral&display=swap"],
@@ -95,6 +98,7 @@ const FONTS = [
     ["BIZ UDPMincho", "https://fonts.googleapis.com/css2?family=BIZ+UDPMincho&display=swap"],
     ["筑紫B丸ゴシック", undefined],
     ["Zen Kaku Gothic New", "https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New&display=swap"],
+    ["Klee One", "https://fonts.googleapis.com/css2?family=Klee+One&display=swap"]
 ]
 function addFontList(name, url) {
     const $button = document.createElement("a")
@@ -114,17 +118,17 @@ function addFontList(name, url) {
 FONTS.forEach(font => addFontList(font[0], font[1]))
 
 // Input Event Handlers
-$fontSizeSlider.addEventListener("input", ()=>{
-    $currentFontSize.textContent = $fontSizeSlider.value+"px"
+$fontSizeSlider.addEventListener("input", () => {
+    $currentFontSize.textContent = $fontSizeSlider.value + "px"
     dispatchSetValue("fontSizePx", $fontSizeSlider.value)
 })
 
-$letterSpacingSlider.addEventListener("input", ()=>{
-    $currentLetterSpacing.textContent = $letterSpacingSlider.value+"em"
 $boldCheckbox.addEventListener("change", () => {
     dispatchSetValue("isBold", $boldCheckbox.checked)
 })
 
+$letterSpacingSlider.addEventListener("input", () => {
+    $currentLetterSpacing.textContent = $letterSpacingSlider.value + "em"
     dispatchSetValue("letterSpacingEm", $letterSpacingSlider.value)
 })
 
@@ -158,11 +162,11 @@ function dispatchLoadCSS(url) {
     dispatch("LOAD_CSS", { url })
 }
 
-function dispatchSetValue(fieldName, value){
-    return dispatch("SET_VALUE", {fieldName, value})
+function dispatchSetValue(fieldName, value) {
+    return dispatch("SET_VALUE", { fieldName, value })
 }
 
-function dispatchGetSetting(){
+function dispatchGetSetting() {
     return dispatch("GET_SETTING")
 }
 
