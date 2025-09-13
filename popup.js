@@ -3,13 +3,15 @@
  * @param {string} id 
  * @returns {HTMLElement}
  */
-function $(id){
+function $(id) {
     return document.getElementById(id)
 }
 
 const $currentFontFamily = $("current-font-family")
 const $fontFamilySelect = $("font-family-select")
 const $customFontFamilyInput = $("custom-font-family-input")
+
+const $boldCheckbox = $("bold-checkbox")
 
 const $currentFontSize = $("current-font-size")
 const $fontSizeSlider = $("font-size-slider")
@@ -119,6 +121,10 @@ $fontSizeSlider.addEventListener("input", ()=>{
 
 $letterSpacingSlider.addEventListener("input", ()=>{
     $currentLetterSpacing.textContent = $letterSpacingSlider.value+"em"
+$boldCheckbox.addEventListener("change", () => {
+    dispatchSetValue("isBold", $boldCheckbox.checked)
+})
+
     dispatchSetValue("letterSpacingEm", $letterSpacingSlider.value)
 })
 

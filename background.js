@@ -1,6 +1,7 @@
 // State
 let setting = {
     "fontFamily": "",
+    "isBold": false,
     "fontSizePx": 0,
     "letterSpacingEm": 0,
     "wordSpacingEm": 0,
@@ -19,6 +20,9 @@ function applyToPage(fieldName) {
     switch (fieldName) {
         case "fontFamily":
             $cmeditor.style.setProperty("--source-font-family", setting.fontFamily)
+            break
+        case "isBold":
+            $cmeditor.style.fontWeight = setting.isBold ? "bold" : ""
             break
         case "fontSizePx":
             $cmeditor.style.setProperty("--font-size", setting.fontSizePx + "px")
