@@ -63,7 +63,7 @@ chrome.runtime.onMessage.addListener((args, _ev, sendResponse) => {
             sendResponse(setting)
             break
         case "LOAD_CSS":
-            const {url} = payload
+            const { url } = payload
             const $ref = document.createElement("link")
             $ref.rel = "stylesheet"
             $ref.type = "text/css"
