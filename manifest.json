@@ -2,7 +2,7 @@
     "manifest_version": 3,
     "name": "Overleaf Font Customizer",
     "version": "1.0",
-    "description": "Customize the Fonts in Overleaf",
+    "description": "Customize Overleaf editor",
     "permissions": [
         "activeTab",
         "scripting"

@@ -67,6 +67,9 @@ const FONTS = [
     ["Nunito Sans", "https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz@6..12&display=swap"],
     ["Open Sans", "https://fonts.googleapis.com/css2?family=Open+Sans&display=swap"],
     ["Roboto", "https://fonts.googleapis.com/css2?family=Roboto&display=swap"],
+    ["DM Sans", "https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300&display=swap"],
+    ["Mulish", "https://fonts.googleapis.com/css2?family=Mulish&display=swap"],
+    // ["Baloo Thambi 2", "https://fonts.googleapis.com/css2?family=Baloo+Thambi+2&display=swap"],
     ["Lexend", "https://fonts.googleapis.com/css2?family=Lexend:wght@300&display=swap"],
     ["Lato", "https://fonts.googleapis.com/css2?family=Lato&display=swap"],
     ["Inter", "https://fonts.googleapis.com/css2?family=Inter:opsz@14..32&display=swap"],
@@ -81,6 +84,7 @@ const FONTS = [
     ["PT Serif", "https://fonts.googleapis.com/css2?family=PT+Serif&display=swap"],
     ["凸版文久明朝", undefined],
     ["Shippori Mincho B1", "https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1&display=swap"],
+    ["Zen Old Mincho", "https://fonts.googleapis.com/css2?family=Zen+Old+Mincho&display=swap"],
     // ["Source Serif 4", "https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz@8..60&display=swap"], // なぜかエラー
     ["Lora", "https://fonts.googleapis.com/css2?family=Lora&display=swap"],
     ["Spectral", "https://fonts.googleapis.com/css2?family=Spectral&display=swap"],
@@ -98,7 +102,9 @@ const FONTS = [
     ["BIZ UDPMincho", "https://fonts.googleapis.com/css2?family=BIZ+UDPMincho&display=swap"],
     ["筑紫B丸ゴシック", undefined],
     ["Zen Kaku Gothic New", "https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New&display=swap"],
-    ["Klee One", "https://fonts.googleapis.com/css2?family=Klee+One&display=swap"]
+    ["Zen Maru Gothic", "https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic&display=swap"],
+    ["Klee One", "https://fonts.googleapis.com/css2?family=Klee+One&display=swap"],
+    ["M PLUS 1", "https://fonts.googleapis.com/css2?family=M+PLUS+1&display=swap"],
 ]
 function addFontList(name, url) {
     const $button = document.createElement("a")
