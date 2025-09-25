@@ -63,65 +63,20 @@ dispatchGetSetting().then(setting => {
 
 
 // Fonts
-const FONTS = [
-    ["Nunito Sans", "https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz@6..12&display=swap"],
-    ["Open Sans", "https://fonts.googleapis.com/css2?family=Open+Sans&display=swap"],
-    ["Roboto", "https://fonts.googleapis.com/css2?family=Roboto&display=swap"],
-    ["DM Sans", "https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300&display=swap"],
-    ["Mulish", "https://fonts.googleapis.com/css2?family=Mulish&display=swap"],
-    // ["Baloo Thambi 2", "https://fonts.googleapis.com/css2?family=Baloo+Thambi+2&display=swap"],
-    ["Lexend", "https://fonts.googleapis.com/css2?family=Lexend:wght@300&display=swap"],
-    ["Lato", "https://fonts.googleapis.com/css2?family=Lato&display=swap"],
-    ["Inter", "https://fonts.googleapis.com/css2?family=Inter:opsz@14..32&display=swap"],
-    ["Arial", undefined],
-    ["Verdana", undefined],
-    ["Calibri", undefined],
-    ["IPAexMincho", undefined],
-    ["Helvetica", undefined],
-    ["Noto Sans", undefined],
-    ["Meiryo UI", undefined],
-    ["UD デジタル 教科書体 NP", undefined],
-    ["PT Serif", "https://fonts.googleapis.com/css2?family=PT+Serif&display=swap"],
-    ["凸版文久明朝", undefined],
-    ["Shippori Mincho B1", "https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1&display=swap"],
-    ["Zen Old Mincho", "https://fonts.googleapis.com/css2?family=Zen+Old+Mincho&display=swap"],
-    // ["Source Serif 4", "https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz@8..60&display=swap"], // なぜかエラー
-    ["Lora", "https://fonts.googleapis.com/css2?family=Lora&display=swap"],
-    ["Spectral", "https://fonts.googleapis.com/css2?family=Spectral&display=swap"],
-    // ["Merriweather", "https://fonts.googleapis.com/css2?family=Merriweather:opsz,wght@18..144,300..900&display=swap"], // なぜかエラー
-    ["Literata", "https://fonts.googleapis.com/css2?family=Literata:opsz@7..72&display=swap"],
-    ["Noto Serif", undefined],
-    ["Cambria", undefined],
-    ["Book Antiqua", undefined],
-    ["Georgia", undefined],
-    ["Century", undefined],
-    ["Palatino Linotype", undefined],
-    ["Sylfaen", undefined],
-    ["Times New Roman", undefined],
-    ["Yu Mincho", undefined],
-    ["BIZ UDPMincho", "https://fonts.googleapis.com/css2?family=BIZ+UDPMincho&display=swap"],
-    ["筑紫B丸ゴシック", undefined],
-    ["Zen Kaku Gothic New", "https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New&display=swap"],
-    ["Zen Maru Gothic", "https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic&display=swap"],
-    ["Klee One", "https://fonts.googleapis.com/css2?family=Klee+One&display=swap"],
-    ["M PLUS 1", "https://fonts.googleapis.com/css2?family=M+PLUS+1&display=swap"],
-]
-function addFontList(name, url) {
+function addFontList(family) {
     const $button = document.createElement("a")
-    $button.textContent = name
-    $button.style.fontFamily = name
+    $button.textContent = family
+    $button.style.fontFamily = family
     $button.addEventListener("click", () => {
-        if (url != undefined) {
-            // Web font
-            dispatchLoadCSS(url)
-        }
-        dispatchSetValue("fontFamily", name)
+        dispatchSetValue("fontFamily", family)
         $customFontFamilyInput.value = ""
-        $currentFontFamily.textContent = name
+        $currentFontFamily.textContent = family
     })
     $fontFamilySelect.appendChild($button)
 }
-FONTS.forEach(font => addFontList(font[0], font[1]))
+dispatchGetAvailableFontFamilies().then(families => {
+    families.forEach(addFontList)
+})
 
 // Input Event Handlers
 $fontSizeSlider.addEventListener("input", () => {
@@ -174,6 +129,13 @@ function dispatchSetValue(fieldName, value) {
 
 function dispatchGetSetting() {
     return dispatch("GET_SETTING")
+}
+
+/**
+ * @returns {Promise<String[]>}
+ */
+function dispatchGetAvailableFontFamilies() {
+    return dispatch("GET_AVAILABLE_FONT_FAMILIES")
 }
 
 async function dispatch(action, payload = {}) {
