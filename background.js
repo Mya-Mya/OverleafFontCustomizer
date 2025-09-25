@@ -62,6 +62,7 @@ function applyToPage(fieldName) {
         default:
             break
     }
+    document.body.style.setProperty("--bg-accent-01", "orangered")
 }
 // Message Router
 chrome.runtime.onMessage.addListener((args, _ev, sendResponse) => {
