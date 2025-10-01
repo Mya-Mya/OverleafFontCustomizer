@@ -59,7 +59,7 @@ dispatchGetSetting().then(setting => {
     $bgColorSlider.value = setting.bgColorLevel
 
     $lineBorderCheckbox.checked = setting.lineBorderEnabled
-})
+}).catch(reason => alert(reason))
 
 
 // Fonts
