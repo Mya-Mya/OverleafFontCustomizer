@@ -64,26 +64,7 @@ function applyToPage(fieldName) {
     }
     document.body.style.setProperty("--bg-accent-01", "orangered")
 }
-// Message Router
-chrome.runtime.onMessage.addListener((args, _ev, sendResponse) => {
-    const { action, payload } = args
-    console.log(action, payload)
-    switch (action) {
-        case "SET_VALUE":
-            const { fieldName, value } = payload
-            setting[fieldName] = value
-            applyToPage(fieldName)
-            break
-        case "GET_SETTING":
-            sendResponse(setting)
-            break
-        case "GET_AVAILABLE_FONT_FAMILIES":
-            sendResponse(AVAILABLE_FONT_FAMILIES)
-            break
-        default:
-            break
-    }
-})
+
 
 // Utilities
 function setLineBorderTop(value) {
@@ -136,3 +117,25 @@ const FONTS = [
 ]
 const AVAILABLE_FONT_FAMILIES = FONTS.map(x => x[0])
 const FONT_FAMILY_TO_GOOGLE_FONT_URL = new Map(FONTS)
+
+// Message Router
+chrome.runtime.onMessage.addListener((args, _ev, sendResponse) => {
+    const { action, payload } = args
+    console.log(action, payload)
+    switch (action) {
+        case "SET_VALUE":
+            const { fieldName, value } = payload
+            setting[fieldName] = value
+            applyToPage(fieldName)
+            break
+        case "GET_SETTING":
+            sendResponse(setting)
+            break
+        case "GET_AVAILABLE_FONT_FAMILIES":
+            sendResponse(AVAILABLE_FONT_FAMILIES)
+            break
+        default:
+            break
+    }
+})
+console.log("Overleaf Font Customizer Background")
