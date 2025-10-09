@@ -79,6 +79,10 @@ dispatchGetAvailableFontFamilies().then(families => {
 })
 
 // Input Event Handlers
+$customFontFamilyInput.addEventListener("input", () => {
+    dispatchSetValue("fontFamily", $customFontFamilyInput.value)
+})
+
 $fontSizeSlider.addEventListener("input", () => {
     $currentFontSize.textContent = $fontSizeSlider.value + "px"
     dispatchSetValue("fontSizePx", $fontSizeSlider.value)
