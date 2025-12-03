@@ -75,6 +75,9 @@ function setLineBorderTop(value) {
 const FONTS = [
     ["Nunito Sans", "https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz@6..12&display=swap"],
     ["Open Sans", "https://fonts.googleapis.com/css2?family=Open+Sans&display=swap"],
+    ["PT Sans", "https://fonts.googleapis.com/css2?family=PT+Sans&display=swap"],
+    ["Figtree", "https://fonts.googleapis.com/css2?family=Figtree:wght@300&display=swap"],
+    ["TikTok Sans", "https://fonts.googleapis.com/css2?family=TikTok+Sans:opsz@12..36&display=swap"],
     ["Roboto", "https://fonts.googleapis.com/css2?family=Roboto&display=swap"],
     ["DM Sans", "https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300&display=swap"],
     ["Mulish", "https://fonts.googleapis.com/css2?family=Mulish&display=swap"],
